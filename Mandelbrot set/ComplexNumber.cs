@@ -3,39 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Extreme.Mathematics;
 
 namespace Mandelbrot_set
 {
     class ComplexNumber
     {
-        public double a;
-        public double b;
-        public 
+        public double a;    //Real number
+        public double b;    //Complex number    //i^2 = -1
 
-        ComplexNumber()
+        public ComplexNumber(double a, double b)
         {
+            this.a = a;
+            this.b = b;
         }
 
-        public double square() //i^2 = -1
+        public void square()    //OG form (a+bi)^2    //a takes the form (a^2-b^2) & b takes the form (2abi)  
         {
-            double sqrt = Math.Pow(a+bi,2)
+            double tempA = Math.Pow(a, 2) - Math.Pow(b, 2);
+            b = 2.0 * a * b;
+            a = tempA;
         }
 
-        public double magnitude()
+        public double magnitude()   //Calculates the magnitude of some complex number
         {
-            double mag = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
-            return mag;
+            return Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
         }
 
-        public double add()
+        public void add(ComplexNumber c)    //Adds
         {
-            double sum = 
+            a += c.a;
+            b += c.b;
         }
 
-        public void MBFunction()    //f(z) = z^2 + c
-        {
-
-        }
     }
 }
