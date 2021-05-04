@@ -5,7 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Mandelbrot_set
-{
+{   //The set of complex numbers c where fc(z) = x^2 + c and its iterates must be withing distance 2 from the center (0,0
+    //Iterating 0 gives you two cases,
+    //Case 1: the function outputs a value greater than 2, and thus blows up due to the distance from 0 gets arbitrarily large (goes to infinity)
+    //Case 2: the function outputs a value less than 2, therefore its bounded to [-2,2]
+
     class ComplexNumber
     {
         public double a;    //Real number
