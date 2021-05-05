@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Filled_Julia_Set
 {
@@ -19,43 +22,61 @@ namespace Filled_Julia_Set
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height);   //Creates the bitmap used to draw on
+            Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height); //Creates the bitmap used to draw on
 
-            for (int x = 0; x < pbNumberline.Width; x++)
+            double ca = -0.8;
+            double cb = +0.156;
+
+            const int zoom = 1;
+            const int maxiteration = 100;
+            const int MaxRGB = 255;
+            int clr;
+
+            var colors = (from c in Enumerable.Range(0, 256)
+                          select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
+
+            for (int i = 0; i < pbNumberline.Width; i++)
             {
-                for (int y = 0; y < pbNumberline.Height; y++)
+                for (int j = 0; j < pbNumberline.Height; j++)
                 {
-                    double a = (double)(x - (pbNumberline.Width / 2)) / (double)(pbNumberline.Width / 4);
+                    double za = (double)(i - (pbNumberline.Width / 2)) / (zoom * pbNumberline.Width * 0.5);
                     //Makes sure that a and b are in the range [-2,2]
-                    double b = (double)(y - (pbNumberline.Height / 2)) / (double)(pbNumberline.Height / 4);
+                    double zb = (double)(j - (pbNumberline.Height / 2)) / (zoom * pbNumberline.Height * 0.5);
 
-                    ComplexNumber c = new ComplexNumber(a, b);
-                    ComplexNumber z = new ComplexNumber(0, 0);  //Looking at the behaviour of 0 under iteration
+                    ComplexNumber c = new ComplexNumber(ca, cb);
+                    ComplexNumber z = new ComplexNumber(za, zb);
 
                     int iteration = 0;
+                    clr = MaxRGB;
 
-                    while (iteration < 100)
+                    while (iteration < maxiteration)
                     {
-                        iteration++;
                         z.square();
                         z.add(c);
-                        if (z.magnitude() > 2.0)    //if magnitude is > 2.0 then the iterations will go to infinity
+
+                        if (z.magnitude() > 2.00)
                         {
                             break;
                         }
+
+                        iteration++;
                     }
 
-                    if (iteration < 100)
+                    if (iteration == maxiteration)
                     {
-                        bitmapImage.SetPixel(x, y, Color.Black);
+                        bitmapImage.SetPixel(i, j, Color.Aqua);
                     }
                     else
                     {
-                        bitmapImage.SetPixel(x, y, Color.Blue);
+                        bitmapImage.SetPixel(i, j, Color.Black);
+
                     }
+
                 }
+
             }
             pbNumberline.Image = bitmapImage;
         }
+
     }
 }

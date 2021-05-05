@@ -21,6 +21,8 @@ namespace Mandelbrot_set
         {
             Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height);   //Creates the bitmap used to draw on
 
+            const int maxiteration = 100;
+
             for (int x = 0; x < pbNumberline.Width; x++)
             {
                 for (int y = 0; y < pbNumberline.Height; y++)
@@ -34,7 +36,7 @@ namespace Mandelbrot_set
 
                     int iteration = 0;
 
-                    while (iteration < 100)
+                    while (iteration < maxiteration)
                     {
                         iteration++;
                         z.square();
@@ -45,7 +47,7 @@ namespace Mandelbrot_set
                         }
                     }
 
-                    if (iteration < 100)
+                    if (iteration == maxiteration)
                     {
                         bitmapImage.SetPixel(x, y, Color.Black);
                     }

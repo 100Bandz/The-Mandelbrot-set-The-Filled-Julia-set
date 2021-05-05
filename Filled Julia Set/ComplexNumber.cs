@@ -19,8 +19,8 @@ namespace Filled_Julia_Set
 
         public void square()    //OG form (a+bi)^2    //a takes the form (a^2-b^2) & b takes the form (2abi)  
         {
-            double tempA = Math.Pow(a, 2) - Math.Pow(b, 2);
-            b = 2.0 * a * b;
+            double tempA = Math.Pow(a, 2) - Math.Pow(b, 2); //Real Component
+            b = 2.0 * a * b;    //Imaginary Component
             a = tempA;
         }
 
