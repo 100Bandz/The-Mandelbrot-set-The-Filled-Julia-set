@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace Filled_Julia_Set
 {
@@ -24,24 +16,24 @@ namespace Filled_Julia_Set
         {
             Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height); //Creates the bitmap used to draw on
 
-            double ca = -0.8;
-            double cb = +0.156;
+            double ca =  -0.8;   //Constant C value components
+            double cb = +0.156; 
 
             const int zoom = 1;
-            const int maxiteration = 100;
+            const int maxiteration = 300;
             const int MaxRGB = 255;
             int clr;
 
-            var colors = (from c in Enumerable.Range(0, 256)
+            var colors = (from c in Enumerable.Range(0, 256)    //Colour array that lets makes each iteration a different colour
                           select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
 
             for (int i = 0; i < pbNumberline.Width; i++)
             {
                 for (int j = 0; j < pbNumberline.Height; j++)
                 {
-                    double za = (double)(i - (pbNumberline.Width / 2)) / (zoom * pbNumberline.Width * 0.5);
-                    //Makes sure that a and b are in the range [-2,2]
-                    double zb = (double)(j - (pbNumberline.Height / 2)) / (zoom * pbNumberline.Height * 0.5);
+                    //Each component is scaled to be between [-2,2]
+                    double za = (double)(i - (pbNumberline.Width / 2)) / (zoom * pbNumberline.Width * 0.5); //Real component of Z
+                    double zb = (double)(j - (pbNumberline.Height / 2)) / (zoom * pbNumberline.Height * 0.5);   //Imaginary component of Z
 
                     ComplexNumber c = new ComplexNumber(ca, cb);
                     ComplexNumber z = new ComplexNumber(za, zb);
@@ -49,7 +41,7 @@ namespace Filled_Julia_Set
                     int iteration = 0;
                     clr = MaxRGB;
 
-                    while (iteration < maxiteration)
+                    while (iteration < maxiteration && clr > 1)
                     {
                         z.square();
                         z.add(c);
@@ -59,21 +51,12 @@ namespace Filled_Julia_Set
                             break;
                         }
 
+                        clr -= 1;
                         iteration++;
                     }
 
-                    if (iteration == maxiteration)
-                    {
-                        bitmapImage.SetPixel(i, j, Color.Aqua);
-                    }
-                    else
-                    {
-                        bitmapImage.SetPixel(i, j, Color.Black);
-
-                    }
-
+                    bitmapImage.SetPixel(i, j, colors[clr]);
                 }
-
             }
             pbNumberline.Image = bitmapImage;
         }
