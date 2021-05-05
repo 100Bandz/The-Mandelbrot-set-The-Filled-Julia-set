@@ -5,4 +5,4 @@
  A program that draws the Filled Julia Set!
  
  
- Inspired by Dr Holly Krieger video on Numberphile: https://youtu.be/NGMRB4O922I || https://youtu.be/oCkQ7WK7vuY
+ Inspired by Dr Holly Krieger videos on Numberphile: https://youtu.be/NGMRB4O922I || https://youtu.be/oCkQ7WK7vuY
