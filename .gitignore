@@ -1,0 +1,14 @@
+
+*.exe
+*.config
+*.pdb
+*.cache
+*.txt
+*.resources
+Filled Julia Set/obj/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+*.cache
+Filled Julia Set/obj/Debug/Filled Julia Set.csprojAssemblyReference.cache
+.vs/THE MANDELBROT & FILLED JULIA SET/v16/.suo
+*.cache
+*.cache
+*.cache
