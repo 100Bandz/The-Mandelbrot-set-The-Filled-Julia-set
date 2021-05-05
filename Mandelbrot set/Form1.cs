@@ -21,22 +21,29 @@ namespace Mandelbrot_set
         {
             Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height);   //Creates the bitmap used to draw on
 
-            const int maxiteration = 100;
+            const int zoom = 1;
+            const int maxiteration = 300;
+            const int MaxRGB = 255;
+            int clr;
+
+            var colors = (from c in Enumerable.Range(0, 256)    //Colour array that lets makes each iteration a different colour
+                select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
 
             for (int x = 0; x < pbNumberline.Width; x++)
             {
                 for (int y = 0; y < pbNumberline.Height; y++)
                 {
-                    double a = (double)(x - (pbNumberline.Width / 2)) / (double)(pbNumberline.Width / 4);   
+                    double a = (double)(x - (pbNumberline.Width / 2)) / (double)( pbNumberline.Width/4);   
                     //Makes sure that a and b are in the range [-2,2]
-                    double b = (double)(y - (pbNumberline.Height / 2)) / (double)(pbNumberline.Height / 4);
+                    double b = (double)(y - (pbNumberline.Height / 2)) / (double)( pbNumberline.Height/4);
 
                     ComplexNumber c = new ComplexNumber(a, b);
                     ComplexNumber z = new ComplexNumber(0, 0);  //Looking at the behaviour of 0 under iteration
 
                     int iteration = 0;
+                    clr = MaxRGB;
 
-                    while (iteration < maxiteration)
+                    while (iteration < maxiteration && clr > 1)
                     {
                         iteration++;
                         z.square();
@@ -45,16 +52,11 @@ namespace Mandelbrot_set
                         {
                             break;
                         }
+
+                        clr -= 1;
                     }
 
-                    if (iteration == maxiteration)
-                    {
-                        bitmapImage.SetPixel(x, y, Color.Black);
-                    }
-                    else
-                    {
-                        bitmapImage.SetPixel(x, y, Color.Blue);
-                    }
+                    bitmapImage.SetPixel(x, y, colors[clr]);
                 }
             }
             pbNumberline.Image = bitmapImage;
