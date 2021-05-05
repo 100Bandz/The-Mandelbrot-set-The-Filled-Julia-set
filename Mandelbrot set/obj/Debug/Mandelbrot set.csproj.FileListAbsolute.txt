@@ -1,0 +1,10 @@
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\bin\Debug\Mandelbrot set.exe.config
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\bin\Debug\Mandelbrot set.exe
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\bin\Debug\Mandelbrot set.pdb
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\obj\Debug\Mandelbrot set.csprojAssemblyReference.cache
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\obj\Debug\Mandelbrot_set.Form1.resources
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\obj\Debug\Mandelbrot_set.Properties.Resources.resources
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\obj\Debug\Mandelbrot set.csproj.GenerateResource.cache
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\obj\Debug\Mandelbrot set.csproj.CoreCompileInputs.cache
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\obj\Debug\Mandelbrot set.exe
+C:\Users\Nicolas\Desktop\C#\THE MANDELBROT SET\Mandelbrot set\obj\Debug\Mandelbrot set.pdb
