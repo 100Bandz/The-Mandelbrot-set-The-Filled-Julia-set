@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Mandelbrot_set
 {
@@ -22,9 +27,8 @@ namespace Mandelbrot_set
             Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height);   //Creates the bitmap used to draw on
 
             const int zoom = 1;
-            const int maxiteration = 300;
+            const int maxiteration = 1000;
             const int MaxRGB = 255;
-            int clr;
 
             var colors = (from c in Enumerable.Range(0, 256)    //Colour array that lets makes each iteration a different colour
                 select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
@@ -41,9 +45,9 @@ namespace Mandelbrot_set
                     ComplexNumber z = new ComplexNumber(0, 0);  //Looking at the behaviour of 0 under iteration
 
                     int iteration = 0;
-                    clr = MaxRGB;
+                    var clr = MaxRGB;
 
-                    while (iteration < maxiteration && clr > 1)
+                    do
                     {
                         iteration++;
                         z.square();
@@ -54,7 +58,8 @@ namespace Mandelbrot_set
                         }
 
                         clr -= 1;
-                    }
+
+                    } while (iteration < maxiteration && clr > 1);
 
                     bitmapImage.SetPixel(x, y, colors[clr]);
                 }

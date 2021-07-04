@@ -37,7 +37,7 @@ namespace Mandelbrot_set
             // 
             this.pbNumberline.Location = new System.Drawing.Point(12, 12);
             this.pbNumberline.Name = "pbNumberline";
-            this.pbNumberline.Size = new System.Drawing.Size(500, 500);
+            this.pbNumberline.Size = new System.Drawing.Size(800, 600);
             this.pbNumberline.TabIndex = 0;
             this.pbNumberline.TabStop = false;
             // 
@@ -46,7 +46,7 @@ namespace Mandelbrot_set
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(524, 524);
+            this.ClientSize = new System.Drawing.Size(827, 628);
             this.Controls.Add(this.pbNumberline);
             this.Name = "Form1";
             this.Text = "Mandelbrot Set";

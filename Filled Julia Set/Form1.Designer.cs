@@ -35,9 +35,9 @@ namespace Filled_Julia_Set
             // 
             // pbNumberline
             // 
-            this.pbNumberline.Location = new System.Drawing.Point(95, 25);
+            this.pbNumberline.Location = new System.Drawing.Point(21, 12);
             this.pbNumberline.Name = "pbNumberline";
-            this.pbNumberline.Size = new System.Drawing.Size(500, 500);
+            this.pbNumberline.Size = new System.Drawing.Size(800, 600);
             this.pbNumberline.TabIndex = 0;
             this.pbNumberline.TabStop = false;
             // 
@@ -45,7 +45,7 @@ namespace Filled_Julia_Set
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 581);
+            this.ClientSize = new System.Drawing.Size(835, 631);
             this.Controls.Add(this.pbNumberline);
             this.Name = "Form1";
             this.Text = "Filled Julia Set";

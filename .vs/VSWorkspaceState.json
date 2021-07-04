@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Filled Julia Set",
     "\\Mandelbrot set"
   ],
-  "SelectedNode": "\\Mandelbrot set\\Mandelbrot set.sln",
+  "SelectedNode": "\\Mandelbrot set\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }

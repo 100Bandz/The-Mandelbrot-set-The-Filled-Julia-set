@@ -12,12 +12,12 @@ namespace Filled_Julia_Set
             InitializeComponent();
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
+        public double ca = -0.8;   //Constant C value components
+        public double cb = +0.156;
+
+        public void DrawJulia()
         {
             Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height); //Creates the bitmap used to draw on
-
-            double ca =  -0.8;   //Constant C value components
-            double cb = +0.156; 
 
             const int zoom = 1;
             const int maxiteration = 300;
@@ -25,7 +25,7 @@ namespace Filled_Julia_Set
             int clr;
 
             var colors = (from c in Enumerable.Range(0, 256)    //Colour array that lets makes each iteration a different colour
-                          select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
+                select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
 
             for (int i = 0; i < pbNumberline.Width; i++)
             {
@@ -59,7 +59,14 @@ namespace Filled_Julia_Set
                 }
             }
             pbNumberline.Image = bitmapImage;
+            Refresh();
         }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+          DrawJulia();
+        }
+
 
     }
 }
