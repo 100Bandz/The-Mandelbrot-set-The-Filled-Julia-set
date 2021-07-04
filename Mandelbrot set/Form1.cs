@@ -22,6 +22,16 @@ namespace Mandelbrot_set
             InitializeComponent();
         }
 
+         void ThreadProc()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                MessageBox.Show("Working");
+                // Yield the rest of the time slice.
+                Thread.Sleep(0);
+            }
+        }
+
         private void Form1_Shown(object sender, EventArgs e)    //Literally does whatever is codded, when the form is first shown
         {
             Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height);   //Creates the bitmap used to draw on
@@ -29,6 +39,9 @@ namespace Mandelbrot_set
             const int zoom = 1;
             const int maxiteration = 1000;
             const int MaxRGB = 255;
+            Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.Start();
+            Thread.Sleep(0);
 
             var colors = (from c in Enumerable.Range(0, 256)    //Colour array that lets makes each iteration a different colour
                 select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
@@ -52,6 +65,7 @@ namespace Mandelbrot_set
                         iteration++;
                         z.square();
                         z.add(c);
+                        Thread.Sleep(0);
                         if (z.magnitude() > 2.0)    //if magnitude is > 2.0 then the iterations will go to infinity
                         {
                             break;
