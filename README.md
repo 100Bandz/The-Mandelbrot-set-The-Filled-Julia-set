@@ -5,4 +5,4 @@
  A program that draws a fractal of the Filled Julia Set!
  
  
- Inspired by Dr Holly Krieger videos on Numberphile: https://youtu.be/NGMRB4O922I || https://youtu.be/oCkQ7WK7vuY
+ Inspired by Dr Holly Krieger's videos on Numberphile: https://youtu.be/NGMRB4O922I || https://youtu.be/oCkQ7WK7vuY
