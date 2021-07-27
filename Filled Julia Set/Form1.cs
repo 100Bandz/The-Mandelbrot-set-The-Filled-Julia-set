@@ -20,7 +20,7 @@ namespace Filled_Julia_Set
             Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height); //Creates the bitmap used to draw on
 
             const int zoom = 1;
-            const int maxiteration = 300;
+            const int maxiteration = 1000;
             const int MaxRGB = 255;
             int clr;
 
@@ -55,7 +55,11 @@ namespace Filled_Julia_Set
                         iteration++;
                     }
 
-                    bitmapImage.SetPixel(i, j, colors[clr]);
+                    if (iteration < 1000)
+                    {
+                        bitmapImage.SetPixel(i, j, Color.FromArgb(iteration % 58, iteration % 60 * 3, iteration % 200));  //colors[clr]);
+
+                    }
                 }
             }
             pbNumberline.Image = bitmapImage;
