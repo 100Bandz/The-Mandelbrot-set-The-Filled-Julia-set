@@ -22,7 +22,6 @@ namespace Mandelbrot_set
             InitializeComponent();
         }
 
-
         private void DrawSet(Bitmap bitmapImage)
         {
 
@@ -30,8 +29,6 @@ namespace Mandelbrot_set
             const int maxiteration = 1000;
             const byte MaxRGB = 255;
 
-            var colors = (from c in Enumerable.Range(0, 256)    //Colour array that lets makes each iteration a different colour
-                          select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
 
             for (int x = 0; x < pbNumberline.Width; x++)
             {
@@ -61,13 +58,7 @@ namespace Mandelbrot_set
 
                     } while (iteration < maxiteration && clr > 1);
 
-                    if (iteration < 1000)
-                    {
-                        bitmapImage.SetPixel(x, y, Color.FromArgb(iteration % 58, iteration % 60 * 3, iteration % 200));  //colors[clr]);
-
-                    }
-
-
+                    bitmapImage.SetPixel(x, y, Color.FromArgb(iteration % 58, iteration % 60 * 3, iteration % 200));  //colors[clr]);
                 }
             }
             pbNumberline.Image = bitmapImage;

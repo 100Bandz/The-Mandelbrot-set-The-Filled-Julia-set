@@ -24,8 +24,6 @@ namespace Filled_Julia_Set
             const int MaxRGB = 255;
             int clr;
 
-            var colors = (from c in Enumerable.Range(0, 256)    //Colour array that lets makes each iteration a different colour
-                select Color.FromArgb((c >> 5) * 36, (c >> 3 & 7) * 36, (c & 3) * 85)).ToArray();
 
             for (int i = 0; i < pbNumberline.Width; i++)
             {
@@ -55,11 +53,7 @@ namespace Filled_Julia_Set
                         iteration++;
                     }
 
-                    if (iteration < 1000)
-                    {
-                        bitmapImage.SetPixel(i, j, Color.FromArgb(iteration % 58, iteration % 60 * 3, iteration % 200));  //colors[clr]);
-
-                    }
+                    bitmapImage.SetPixel(i, j, Color.FromArgb(iteration % 58, iteration % 60 * 3, iteration % 200));  //colors[clr]);
                 }
             }
             pbNumberline.Image = bitmapImage;
