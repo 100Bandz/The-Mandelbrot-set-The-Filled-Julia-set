@@ -38,6 +38,5 @@ namespace Mandelbrot_set
             a += c.a;
             b += c.b;
         }
-
     }
 }

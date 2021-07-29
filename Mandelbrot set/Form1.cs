@@ -21,6 +21,7 @@ namespace Mandelbrot_set
         {
             InitializeComponent();
         }
+        const double MaxValueExtent = 2.0;
 
         private void DrawSet(Bitmap bitmapImage)
         {
@@ -29,14 +30,15 @@ namespace Mandelbrot_set
             const int maxiteration = 1000;
             const byte MaxRGB = 255;
 
+            double scale = 2 * MaxValueExtent / Math.Min(bitmapImage.Width, bitmapImage.Height);
 
             for (int x = 0; x < pbNumberline.Width; x++)
             {
                 for (int y = 0; y < pbNumberline.Height; y++)
                 {
-                    double a = (double)(x - (pbNumberline.Width / 2)) / (double)(pbNumberline.Width / 4);
+                    double a = (x- bitmapImage.Width / 2 ) * scale;
                     //Makes sure that a and b are in the range [-2,2]
-                    double b = (double)(y - (pbNumberline.Height / 2)) / (double)(pbNumberline.Height / 4);
+                    double b = (y - bitmapImage.Height / 2) * scale;
 
                     ComplexNumber c = new ComplexNumber(a, b);
                     ComplexNumber z = new ComplexNumber(0, 0);  //Looking at the behaviour of 0 under iteration
@@ -49,7 +51,7 @@ namespace Mandelbrot_set
                         iteration++;
                         z.square();
                         z.add(c);
-                        if (z.magnitude() > 2.0)    //if magnitude is > 2.0 then the iterations will go to infinity
+                        if (z.magnitude() > 2.0) //if magnitude is > 2.0 then the iterations will go to infinity
                         {
                             break;
                         }
@@ -67,8 +69,6 @@ namespace Mandelbrot_set
 
         private void Form1_Shown(object sender, EventArgs e)    //Literally does whatever is codded, when the form is first shown
         {
-            //Thread thread = new Thread(ThreadProc);
-            //thread.Start();
             Bitmap bitmapImage = new Bitmap(pbNumberline.Width, pbNumberline.Height);   //Creates the bitmap used to draw on
             DrawSet(bitmapImage);
 
